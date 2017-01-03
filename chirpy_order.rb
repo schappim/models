@@ -32,7 +32,7 @@ class ChirpyOrder
   end
 
   def parts_backordered?
-    self.chirpy_order_line_items.select{|line| line.backordered == true}.length < 1
+    self.chirpy_order_line_items.select{|line| line.backordered == true}.length > 0
   end
 
   key :email, String
