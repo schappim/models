@@ -116,8 +116,14 @@ class Cart
 
   def update_item(variant_id, qty)
     item = self.items.select{|a| a.variant_id == variant_id}.first
-    item.qty = qty
-    item.save
+
+    if item
+      item.qty = qty
+      item.save
+    else
+      add(variant_id, qty)
+    end
+
   end
 
   def remove_item(variant_id)
