@@ -170,6 +170,8 @@ class ChirpyFulfillmentLineItem
 
   key :title, String
   key :name, String
+  key :img, String
+  key :handle, String
   key :sku, String
   key :quantity, String
 
