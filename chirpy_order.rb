@@ -109,8 +109,9 @@ class ChirpyOrderEvent
   key :title, String
   key :message, String
   key :user, String
-  key :img, String
-  key :icon, String
+  key :img, String # Image of the user or service creating the event
+  key :icon, String # Action Icon - E.g. fulfillment or refund.
+  key :internal, Boolean # For events which the customer doesn't need to see.
 
   timestamps!
 
