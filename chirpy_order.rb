@@ -127,6 +127,8 @@ class ChirpyOrderLineItem
   key :title, String
   key :name, String
   key :sku, String
+  key :img, String
+  key :handle, String
   key :ordering_note, String
 
   key :prepped, Boolean
