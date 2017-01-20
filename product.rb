@@ -5,8 +5,11 @@ class Product
   key :description, String
   key :specs, String
 
-  key :cat_primary, String
-  key :cat_secondary, String
+  key :cat_primary_handle, String
+  key :cat_secondary_handle, String
+
+  key :cat_primary_title, String
+  key :cat_secondary_title, String
 
   key :supplier_cats, Array
 
