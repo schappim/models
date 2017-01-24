@@ -14,6 +14,9 @@ class Collection
   include MongoMapper::Document
   key :title, String
   key :handle, String
+  key :parent, ObjectId
+  key :children, Array
+  key :search_string, String
   key :description, String
   many :sub_collections
   timestamps!
