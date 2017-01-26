@@ -5,6 +5,8 @@ class Product
   key :description, String
   key :specs, String
 
+  
+  key :collections, Array
   key :cat_primary_handle, String
   key :cat_secondary_handle, String
 
