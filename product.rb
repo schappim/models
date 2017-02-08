@@ -18,6 +18,10 @@ class Product
 
   key :sku, String, :unique => true
   key :lbe_sku, String
+  key :mpn, String # Supplier SKU
+  key :notes, String # Notes Field
+  key :alternates, Array # Alternate Products
+
   key :shopify_variant_id, Integer
   key :shopify_product_id, Integer
   key :shopify_handle, String
@@ -27,6 +31,7 @@ class Product
   key :supplier_inv, Integer, :default => 0
   key :local_inv, Integer, :default => 0
   key :ebay_inv, Integer, :default => 0
+  key :weight, Integer, :default => 100
   
   key :reorder_inv, Integer, :default => 0
   key :do_not_order, Boolean, :default => false
