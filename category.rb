@@ -5,7 +5,7 @@ class Category
   key :handle, String
   key :children, Array
   key :parent, ObjectId
-  
+
   timestamps!
 end
 
@@ -20,6 +20,9 @@ class Collection
   key :search_string, String
   key :description, String
   many :sub_collections
+
+  key :img_src, String
+
   timestamps!
 end
 

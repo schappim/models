@@ -44,8 +44,6 @@ class Product
 
   key :moq, Integer
 
-  
-
   belongs_to :supplier
   many :images
   many :resources
