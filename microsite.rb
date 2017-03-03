@@ -6,6 +6,7 @@ class Microsite
   key :title, String
   key :keywords, String
   key :description, String
+  key :lead, String
   key :author, String
   key :domain, String
   key :name, String
