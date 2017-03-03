@@ -5,6 +5,7 @@ class Microsite
   key :handle, String
   key :title, String
   key :keywords, String
+  key :rotator, String
   key :description, String
   key :lead, String
   key :author, String
