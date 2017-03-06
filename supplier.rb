@@ -9,6 +9,8 @@ class Supplier
   key :login, String
   key :password, String
   key :url, String
+  key :logo, String
+  key :handle, String
 
   many :products
   many :supplier_categories
