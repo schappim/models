@@ -17,4 +17,5 @@ class MarketingImg
   key :x1, String
   key :x2, String
   key :url, String
+  key :alt, String
 end
