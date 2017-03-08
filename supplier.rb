@@ -10,6 +10,7 @@ class Supplier
   key :password, String
   key :url, String
   key :logo, String
+  key :logo_2x, String
   key :handle, String
 
   key :show_as_brand, Boolean
