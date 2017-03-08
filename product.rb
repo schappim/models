@@ -41,6 +41,7 @@ class Product
   key :supplier_rrp, Float
   key :price, Float # AUD
   key :retired, Boolean
+  key :featured, Boolean
 
   key :moq, Integer
 
