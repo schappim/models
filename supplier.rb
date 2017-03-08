@@ -12,6 +12,8 @@ class Supplier
   key :logo, String
   key :handle, String
 
+  key :show_as_brand, Boolean
+
   many :products
   many :supplier_categories
   many :supplier_order
