@@ -47,6 +47,10 @@ class Product
 
   key :published, Boolean
 
+  def handle
+    return self.shopify_handle
+  end
+
   belongs_to :supplier
   many :images
   many :resources
