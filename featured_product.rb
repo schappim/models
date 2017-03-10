@@ -1,6 +1,8 @@
 class FeaturedProduct
   include MongoMapper::Document
 
-  many :products
+  key :product_id, Object
+
+  many :products, :in => :product_id
   timestamps!
 end

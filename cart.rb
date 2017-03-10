@@ -59,7 +59,8 @@ class Cart
         item = self.items.select{|a| a.variant_id == variant_id}.first
 
         if item
-          item.qty = item.qty + qty
+          qty = check_available(variant_id, item.qty + qty)
+          item.qty = qty
           item.save
         else
           item = Item.new
@@ -72,7 +73,7 @@ class Cart
           item.local_inv = product.local_inv
           item.supplier_inv = product.supplier_inv
           item.handle = product.shopify_handle
-          item.qty = qty
+          item.qty = check_available(variant_id, qty)
 
           self.items << item
         end
@@ -121,6 +122,8 @@ class Cart
   def update_item(variant_id, qty)
     item = self.items.select{|a| a.variant_id == variant_id}.first
 
+    qty = check_available(variant_id, qty)
+
     if item
       item.qty = qty
       item.save
@@ -136,6 +139,33 @@ class Cart
     self.save
   end
 
+  def get_item_qty(variant_id)
+    item = self.items.select{|a| a.variant_id == variant_id}.first
+
+    unless item.nil?
+      return item.qty
+    end
+
+    return nil
+
+  end
+
+  def check_available(variant_id, qty)
+
+    products = Product.where(:shopify_variant_id => variant_id).fields(:local_inv,:supplier_inv).first
+
+    unless products.nil?
+      total_items = products.supplier_inv.to_i + products.local_inv.to_i
+
+      if qty.to_i > total_items
+        qty = total_items
+      end
+
+    end
+
+    return qty
+
+  end
   timestamps!
 
   before_save :update_totals
