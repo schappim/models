@@ -2,6 +2,10 @@ class Product
   include MongoMapper::Document
   key :title, String
 
+
+  key :hstariff, String
+
+
   key :description, String
   key :specs, String
 
