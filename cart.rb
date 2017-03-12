@@ -49,33 +49,34 @@ class Cart
 
     unless variant_id.nil?
 
-      product = Product.where(:shopify_variant_id => variant_id).fields(:title, :shopify_variant_id, :shopify_product_id, :price, :local_inv,:supplier_inv, :shopify_handle, :ebay_inv, :sku, :supplier).first
-      puts product.inspect
+      if qty > 0
 
-      puts variant_id.inspect
+        product = Product.where(:shopify_variant_id => variant_id).fields(:title, :shopify_variant_id, :shopify_product_id, :price, :local_inv,:supplier_inv, :shopify_handle, :ebay_inv, :sku, :supplier).first
 
-      unless product.nil?
+        unless product.nil?
 
-        item = self.items.select{|a| a.variant_id == variant_id}.first
+          item = self.items.select{|a| a.variant_id == variant_id}.first
 
-        if item
-          qty = check_available(variant_id, item.qty + qty)
-          item.qty = qty
-          item.save
-        else
-          item = Item.new
-          item.variant_id = product.shopify_variant_id.to_i
-          item.product_id = product.shopify_product_id.to_i
+          if item
+            qty = check_available(variant_id, item.qty + qty)
+            item.qty = qty
+            item.save
+          else
+            item = Item.new
+            item.variant_id = product.shopify_variant_id.to_i
+            item.product_id = product.shopify_product_id.to_i
 
-          item.title = product.title
-          item.price = product.price
-          item.img_url = product.images.first.src rescue "https://placeholdit.imgix.net/~text?txtsize=13&txt=image%20coming%20soon&w=100&h=100"
-          item.local_inv = product.local_inv
-          item.supplier_inv = product.supplier_inv
-          item.handle = product.shopify_handle
-          item.qty = check_available(variant_id, qty)
+            item.title = product.title
+            item.price = product.price
+            item.img_url = product.images.first.src rescue "https://placeholdit.imgix.net/~text?txtsize=13&txt=image%20coming%20soon&w=100&h=100"
+            item.local_inv = product.local_inv
+            item.supplier_inv = product.supplier_inv
+            item.handle = product.shopify_handle
+            item.qty = check_available(variant_id, qty)
 
-          self.items << item
+            self.items << item
+          end
+
         end
 
       end
@@ -120,15 +121,23 @@ class Cart
   end
 
   def update_item(variant_id, qty)
-    item = self.items.select{|a| a.variant_id == variant_id}.first
 
-    qty = check_available(variant_id, qty)
+    qty = qty.to_i
 
-    if item
-      item.qty = qty
-      item.save
+    if qty <= 0
+      remove_item(variant_id)
     else
-      add(variant_id, qty)
+      item = self.items.select{|a| a.variant_id == variant_id}.first
+
+      qty = check_available(variant_id, qty)
+
+      if item
+        item.qty = qty
+        item.save
+      else
+        add(variant_id, qty)
+      end
+
     end
 
   end
