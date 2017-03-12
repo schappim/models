@@ -51,6 +51,22 @@ class Product
     return self.shopify_handle
   end
 
+  def supplier_inv_calculated
+
+    available = supplier_inv
+
+    if local_inv < 1
+      available = supplier_inv + local_inv
+    end
+
+    if available < 0
+      available = 0
+    end
+
+    return available
+
+  end
+
   belongs_to :supplier
   many :images
   many :resources
