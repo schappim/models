@@ -66,6 +66,7 @@ class Product
     return available
 
   end
+  
 
   belongs_to :supplier
   many :images
