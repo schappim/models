@@ -1,8 +1,11 @@
 class Location
   include MongoMapper::Document
 
-  key :type, String # Local/Supplier
-  key :qty, Integer # Local/Supplier
+  key :warehouse, String
+  key :zone, String
+  key :rack, String 
+  key :shelf, String
+  key :slot, String
 
   belongs_to :inventory
   timestamps!

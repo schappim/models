@@ -73,9 +73,12 @@ class Product
   
 
   belongs_to :supplier
+  many :inventories
   many :images
   many :resources
   timestamps!
+
+  
 end
 
 class Resource
