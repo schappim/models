@@ -43,6 +43,7 @@ class Product
   key :buy_price_usd, Float
   key :buy_price_aud, Float
   key :supplier_rrp, Float
+  key :reseller_price, Float # The price we sell to Kogan
   key :price, Float # AUD
   key :retired, Boolean
   key :featured, Boolean
