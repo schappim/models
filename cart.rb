@@ -1,4 +1,3 @@
-
 class Cart
   include MongoMapper::Document
 
@@ -145,6 +144,13 @@ class Cart
   def remove_item(variant_id)
     item = self.items.select{|a| a.variant_id == variant_id}.first
     self.items.delete(item)
+    self.save
+  end
+
+  def empty_cart()
+    self.items.each do | item |
+      self.items.delete(item)
+    end
     self.save
   end
 
