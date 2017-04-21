@@ -26,6 +26,8 @@ class Product
   key :notes, String # Notes Field
   key :alternates, Array # Alternate Products
 
+  key :total_sold, Integer
+  
   key :shopify_variant_id, Integer
   key :shopify_product_id, Integer
   key :shopify_handle, String
