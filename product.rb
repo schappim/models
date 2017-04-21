@@ -49,6 +49,7 @@ class Product
   key :price, Float # AUD
   key :retired, Boolean
   key :featured, Boolean
+  key :kogan, Boolean
 
   key :moq, Integer
 
