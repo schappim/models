@@ -5,6 +5,15 @@ class School
   key :company, String # Some schools have a corporate name
 
 
+  # Google
+  key :formatted_address, String
+  key :place_id, String
+  
+  # Is the school open or closed?
+  key :status, String
+
+
+
   # School Address
   key :address1, String
   key :address2, String
