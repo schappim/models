@@ -12,6 +12,11 @@ class School
   # Is the school open or closed?
   key :status, String
 
+  # Shipping ETA
+  key :regular_post_min, Integer
+  key :regular_post_max, Integer
+  key :express_post_min, Integer
+  key :express_post_max, Integer
 
 
   # School Address

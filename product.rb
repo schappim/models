@@ -6,6 +6,8 @@ class Product
   key :hstariff, String
 
 
+  key :last_stocktake, Time
+
   key :description, String
   key :specs, String
 
@@ -84,6 +86,8 @@ class Product
 
   
 end
+
+
 
 class Resource
   include MongoMapper::EmbeddedDocument
