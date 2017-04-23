@@ -8,6 +8,7 @@ class Product
   key :supplier_cats, Array
 
 
+  key :upc, String, :unique => true
   key :sku, String, :unique => true
   key :lbe_sku, String
   key :shopify_variant_id, Integer
