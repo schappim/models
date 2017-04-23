@@ -9,6 +9,11 @@ class Supplier
   key :login, String
   key :password, String
   key :url, String
+  key :logo, String
+  key :logo_2x, String
+  key :handle, String
+
+  key :show_as_brand, Boolean
 
   many :products
   many :supplier_categories

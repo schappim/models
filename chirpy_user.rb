@@ -9,6 +9,7 @@ class ChirpyUser
   key :default_a4_printer, String
   key :default_large_dymo, String
   key :default_small_dymo, String
+  key :default_scales, String
 
   def name
     return "#{self.first_name} #{self.last_name}"

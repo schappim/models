@@ -14,6 +14,9 @@ class Customer
   key :total_spent, Float
   key :verified_email, Boolean
   key :accepts_marketing, Boolean
+  key :education, Boolean
+
+
 
   many :addresses
   timestamps!
