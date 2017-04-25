@@ -11,7 +11,7 @@ class Product
   key :description, String
   key :specs, String
 
-  
+
   key :collections, Array
   key :cat_primary_handle, String
   key :cat_secondary_handle, String
@@ -22,7 +22,7 @@ class Product
   key :supplier_cats, Array
 
 
-  key :upc, String, :unique => true
+  key :upc, String #, :unique => true # breaks saving with unique constraint
   key :sku, String, :unique => true
   key :lbe_sku, String
   key :mpn, String # Supplier SKU
@@ -30,7 +30,7 @@ class Product
   key :alternates, Array # Alternate Products
 
   key :total_sold, Integer
-  
+
   key :shopify_variant_id, Integer
   key :shopify_product_id, Integer
   key :shopify_handle, String
@@ -41,7 +41,7 @@ class Product
   key :local_inv, Integer, :default => 0
   key :ebay_inv, Integer, :default => 0
   key :weight, Integer, :default => 100
-  
+
   key :reorder_inv, Integer, :default => 0
   key :do_not_order, Boolean, :default => false
 
@@ -77,7 +77,7 @@ class Product
     return available
 
   end
-  
+
 
   belongs_to :supplier
   many :inventories
@@ -85,7 +85,7 @@ class Product
   many :resources
   timestamps!
 
-  
+
 end
 
 
