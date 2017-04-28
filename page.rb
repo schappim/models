@@ -9,4 +9,6 @@ class Page
   key :date, Date
   key :img, String
 
+  timestamps!
+
 end
