@@ -17,7 +17,7 @@ class Cart
   key :shipping_country, String
   key :shipping_phone, String
 
-  key :shipping_method, String, :default => "Express"
+  key :shipping_method, String, :default => "Regular"
 
   key :billing_email, String
   key :billing_first_name, String
