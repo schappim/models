@@ -58,8 +58,12 @@ class Cart
 
           if item
             qty = check_available(variant_id, item.qty + qty)
-            item.qty = qty
-            item.save
+
+            if qty > 0
+              item.qty = qty
+              item.save
+            end
+
           else
             item = Item.new
             item.variant_id = product.shopify_variant_id.to_i
@@ -73,7 +77,10 @@ class Cart
             item.handle = product.shopify_handle
             item.qty = check_available(variant_id, qty)
 
-            self.items << item
+            if item.qty > 0
+              self.items << item
+            end
+
           end
 
         end
@@ -122,13 +129,12 @@ class Cart
   def update_item(variant_id, qty)
 
     qty = qty.to_i
+    qty = check_available(variant_id, qty)
 
     if qty <= 0
       remove_item(variant_id)
     else
       item = self.items.select{|a| a.variant_id == variant_id}.first
-
-      qty = check_available(variant_id, qty)
 
       if item
         item.qty = qty
@@ -176,6 +182,10 @@ class Cart
         qty = total_items
       end
 
+    end
+
+    if qty < 0
+      qty = 0
     end
 
     return qty
