@@ -73,6 +73,7 @@ class ChirpyOrder
   key :gst, Float, :default => 0
   key :total, Float, :default => 0
 
+  key :ordering_note, String
 
   key :name, String
   key :shopify_id, Integer

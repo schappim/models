@@ -36,6 +36,8 @@ class Cart
   key :gst, Float, :default => 0
   key :total, Float, :default => 0
 
+  key :ordering_note, String
+
   key :ip, String
   key :user_agent, String
   key :referer, String
