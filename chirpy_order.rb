@@ -28,6 +28,9 @@ class ChirpyOrder
   end
 
   def name
+    if self.id2.nil?
+      return 'X'
+    end
     return self.id2
   end
 
@@ -74,6 +77,7 @@ class ChirpyOrder
   key :total, Float, :default => 0
 
   key :ordering_note, String
+  key :ordering_note_seen, Integer, :default => 0
 
   key :name, String
   key :shopify_id, Integer
