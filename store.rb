@@ -3,6 +3,8 @@ class Store
   many :leads
   many :marketing_img
 
+  many :discountcodes
+
   timestamps!
 end
 
@@ -19,3 +21,14 @@ class MarketingImg
   key :url, String
   key :alt, String
 end
+
+
+class Discountcode
+  include MongoMapper::EmbeddedDocument
+  key :discount_code, String
+  key :dollar_value, Float
+  key :percent_value, Float
+  key :expire_date, String
+end
+
+

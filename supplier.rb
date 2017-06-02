@@ -1,5 +1,3 @@
-
-
 class Supplier
   include MongoMapper::Document
   key :name, String

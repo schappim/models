@@ -37,6 +37,8 @@ class Cart
   key :total, Float, :default => 0
 
   key :ordering_note, String
+  key :discount_code, String
+  key :discount_amount, Float, :default => 0
 
   key :ip, String
   key :user_agent, String
@@ -98,6 +100,43 @@ class Cart
     return (self.items.sum{|a| a.price * a.qty})
   end
 
+  def calculate_discount
+
+    discount = 0
+
+    unless( self.discount_code.nil? )
+
+      code = nil
+
+      codes = Store.all().first.discountcodes
+
+      codes.each do |c|
+        if c.discount_code == self.discount_code
+          code = c
+        end
+      end
+
+      puts code.inspect
+
+      unless code.nil?
+        if code.percent_value > 0
+          discount = ( order_subtotal * (code.percent_value / 100) )
+        else
+          discount = code.dollar_value
+        end
+
+        if( order_subtotal - discount < 0 )
+          discount = order_subtotal
+        end
+      end
+
+
+    end
+
+    return discount
+  end
+
+
   def shipping_price
     shipping_price = 0
 
@@ -125,7 +164,7 @@ class Cart
   end
 
   def order_total
-    return (self.items.sum{|a| a.price * a.qty} + self.shipping_price)
+    return ((self.items.sum{|a| a.price * a.qty} - self.discount_amount)+ self.shipping_price)
   end
 
   def update_item(variant_id, qty)
@@ -201,6 +240,7 @@ class Cart
   private
   def update_totals
     self.subtotal = self.order_subtotal
+    self.discount_amount = self.calculate_discount
     self.shipping = self.shipping_price
     self.total = self.order_total
     self.gst = (self.order_total * (1/11.0)).round(2)

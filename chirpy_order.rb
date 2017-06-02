@@ -79,6 +79,9 @@ class ChirpyOrder
   key :ordering_note, String
   key :ordering_note_seen, Integer, :default => 0
 
+  key :discount_code, String
+  key :discount_amount, Float, :default => 0
+
   key :name, String
   key :shopify_id, Integer
   key :fulfillment_status, String # (fulfilled, partial, null)
