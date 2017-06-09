@@ -57,6 +57,7 @@ class Product
   key :moq, Integer
 
   key :published, Boolean
+  
 
   def handle
     return self.shopify_handle
