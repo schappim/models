@@ -18,6 +18,7 @@ class Cart
   key :shipping_phone, String
 
   key :shipping_method, String, :default => "Regular"
+  key :split_shipping, Boolean
 
   key :billing_email, String
   key :billing_first_name, String
@@ -157,6 +158,10 @@ class Cart
       shipping_price = 0
     else
       shipping_price = 999
+    end
+
+    if( self.split_shipping )
+      shipping_price = shipping_price * 2
     end
 
     return shipping_price
