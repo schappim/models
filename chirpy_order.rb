@@ -59,6 +59,7 @@ class ChirpyOrder
   key :dymo_shipping_label, String
 
   key :shipping_method, String
+  key :split_shipping, Boolean
 
   key :billing_first_name, String
   key :billing_last_name, String
