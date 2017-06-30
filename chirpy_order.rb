@@ -97,6 +97,8 @@ class ChirpyOrder
   key :financial_status, String
   key :payment_date, Time
 
+  key :user_ip, String
+
   # financial_status possible values:
   # pending
   # authorized
