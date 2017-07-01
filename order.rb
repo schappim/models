@@ -6,6 +6,7 @@ class Order
   key :fulfillment_status, String
   key :tracking, String
   key :token, String
+  key :email, String
   key :customer_last_updated, Time
 
   many :order_line_items
