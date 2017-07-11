@@ -56,10 +56,13 @@ class Product
   key :featured, Boolean
   key :kogan, Boolean
 
+  key :kogan_cat, String
+  key :kogan_imgs, String
+
   key :moq, Integer
 
   key :published, Boolean
-  
+
 
   def handle
     return self.shopify_handle
